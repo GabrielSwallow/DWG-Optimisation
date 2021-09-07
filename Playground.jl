@@ -1,5 +1,6 @@
 function sqr(x)
-    x^2
+    y = x^2 + 1000
+    return y
 end
 
 println(sqr(10))

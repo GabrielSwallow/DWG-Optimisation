@@ -1,25 +1,29 @@
 import numpy as np
 import random as rd
+import time
+import matplotlib.pyplot as plt
+import plotparams
 
 #import julia, the api module
 import julia
-#Used to add atributes to the julia namespace
-#in jl.eval(), don't need Main.atr, can just access via atr
+#julia.Main is used to add and access atributes to the julia namespace
+#inside Main.eval(), don't need Main.<atribute>, can just access via <attribute>
 from julia import Main
 
-#shorter syntax
-jl = julia.api.Julia(compiled_modules=False)
-
-#used to illustrate speed of computation
-import time
-
-#jl.using("TextAnalysis") - imports Julia packages needed in OG file
+#Julia.eval() runs julia code. Set as jl to simplify syntax
+#jl = julia.Julia(compiled_modules=False)
 
 
-#%%
+#jl.using("TextAnalysis") - imports Julia packages needed in .jl if need be file
+
+
+
+
+####
 #Running julia in python directly
 ####
-t1 = time.perf_counter()
+#t1 = time.perf_counter()
+
 #define the data in python
 data1=[1,2,3,4,5]
 
@@ -27,41 +31,39 @@ data1=[1,2,3,4,5]
 Main.data_j1 = data1
 
 #define a julia function
-jl.eval("func(x) = x^2")
+Main.eval("func(x) = x^2")
 #run and return the values back to a python object
-out1 = jl.eval("func.(data_j1)")
-t2 = time.perf_counter()
 
-time_jl = t2-t1
+out1 = Main.eval("func.(data_j1)")
 
-#%%
+
+#t2 = time.perf_counter()
+#time_jl = t2-t1
+
+
+
+
+
+####
 #Running a julia file in python
 ####
-data2=[10,11,12,13,14,15]
+data2= np.linspace(-100,100,1000)
 Main.data_j2 = data2
 
-jl.eval('include("Playground.jl")')
-out2 = jl.eval("sqr.(data_j2)")
-
-print(out1)
-print(out2)
+Main.eval('include("Playground.jl")')
+out2 = Main.eval("sqr.(data_j2)")
 
 
+plt.plot(data2, out2)
+plt.ylim(0, 10000)
+plt.grid()
+plt.show()
 
 
-#%%
-#Python time comparison
-####
-t1 = time.perf_counter()
 
-data1=[rd.randint(1, 10) for i in range(100000000)]
-out1_py=[]
-for i in data1:
-    out1_py.append(i*i)
 
-t2 = time.perf_counter()
 
-time_py = t2-t1
+
 
 #%% test
 #from julia import Base ##  basic julia functions to run
