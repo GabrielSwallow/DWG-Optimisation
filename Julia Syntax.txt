@@ -1,0 +1,102 @@
+Julia Syntax
+
+
+Command Line:
+
+pwd() 	 		shows current working directory
+cd("folder")  		moves to folder within current directory
+cd()  			resets to home directory
+homedir() 		home directory
+include("file.jl") 	import a file into the terminal for use
+
+
+Basics:
+
+println()		print a string to terminal
+x = 42			assigns a value to x (no need to declare type!)
+typeof(var)		returns type of variable
+x == y			returns boolean
+#			comment
+#= .... =#		multiline comment
+10^2			power
+10%2			modulus
+x+=1			adds 1 to x
+x = convert(type, y)	converts y to "type" and assigns this to x
+"""str"""		multiline string
+'a'			defines a Char, NOT a String
+"expression = $(x+y)"	prints value of variables or statements within string
+string("apples:", x)	converts arguments into one string
+str1*str2		concatonates strings
+
+
+Data Structures:
+
+dic = Dict("key"=>"val", ...)	initialises dictionary (the type of all keys and of all vals must be the same). Cannot be indexed
+dic["newKey"] = "newVal"	adds to dictionary
+dic["key"]			returns the value of a key
+pop!(dic, "key")		removes "key" from dictionary, and returns its value
+
+tuple = (1,2,3)			initialises tuple. (Immutable)
+tuple[1]			returns the FIRST element in tuple (Julia is 1 indexed)
+
+array = [1,2,3]			initialises array
+array[1] = 5			reassigns the first element of array
+push!(array, 4)			appends 4 onto the end of array
+pop!(array)			removes the last element of array and returns its value
+array[1:3]			returns the first 3 elements of array
+rand(2,3,4)			returns a 3D array (matrix), where the 1st, 2nd and 3rd dimensions are populated by 2,3 and 4 values
+zeros(5,5)			initialises an empty 5x5 array (matrix)
+
+length(structure)		returns the number of elements in a data structure
+sort()				sorts and returns the list
+sort!()				sorts the original object and mutates it 
+
+
+Loops:
+
+while *condition*
+	*loop body*
+end
+
+for *var* in *iterable*
+	*loop body*
+end
+
+for x in 1:5 			range(1,5)
+
+for i in 1:5, j in 1:5		nested for loop (could be embedded, but this is neater)
+
+x = [i+j for i in 1:5, j in 1:5] array comprehension
+
+
+Conditions:
+
+if *C1*
+	*E1*
+elseif *C2*
+	*E2*
+else
+	*E3*
+end
+
+shorthand:
+C1 ? E1 : C2 ? E2 : E3
+
+if C1 && C2			double conditionality
+
+
+Functions:
+
+function func(*args*)
+	*function*
+	return val		(atumatically returns the last line of the function, but omg not doing that)
+end
+
+Alternatively:
+func(*args*) = *function*	also defines a function
+
+Alternatively:
+func = *args* -> *function*	a lambda or mapping method of defining a function
+
+func(*args*)			applies function to the whole object
+func.(*args*)			applies function the each element in the object, and returns the original type of object (eg matrix)
