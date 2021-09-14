@@ -17,7 +17,7 @@ from julia import Main
 #jl.using("TextAnalysis") - imports Julia packages needed in .jl if need be file
 
 
-
+#%%
 
 ####
 #Running julia in python directly
@@ -31,7 +31,7 @@ data1=[1,2,3,4,5]
 Main.data_j1 = data1
 
 #define a julia function
-Main.eval("func(x) = x^2")
+Main.eval('func(x) = x^2')
 #run and return the values back to a python object
 
 out1 = Main.eval("func.(data_j1)")
@@ -51,11 +51,11 @@ data2= np.linspace(-100,100,1000)
 Main.data_j2 = data2
 
 Main.eval('include("Playground.jl")')
-out2 = Main.eval("sqr.(data_j2)")
+out2 = Main.eval("quad.(data_j2)")
 
 
 plt.plot(data2, out2)
-plt.ylim(0, 10000)
+plt.ylim(0, 10100)
 plt.grid()
 plt.show()
 
