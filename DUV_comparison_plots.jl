@@ -104,7 +104,7 @@ for (param, values) in parameters
         sfig = plt.figure()
         sfig.set_size_inches(10, 5)
 
-        plt.ylim([0,500])
+        #plt.ylim([0,500])
         plt.xlim([-10,35])
 
         title = param
