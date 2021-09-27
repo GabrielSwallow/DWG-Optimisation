@@ -58,15 +58,3 @@ plt.plot(data2, out2)
 plt.ylim(0, 10100)
 plt.grid()
 plt.show()
-
-
-
-
-
-
-
-#%% test
-#from julia import Base ##  basic julia functions to run
-#print(Base.sind(90))
-#from julia import Main
-#julia.install() installs PyCall (only needed once. Import julia, then install)
