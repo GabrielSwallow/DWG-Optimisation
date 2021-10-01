@@ -23,7 +23,9 @@ An original Luna example file, used to run an example simulation and plot the da
 
 ## Additional files 
 ### API_example.py
-An example of how the julia-python API works to act as reference for future progress.
+An example of how the Julia-Python API works to act as reference for future progress.
+### Playground.jl
+A simple julia file, used in the API_example.py file to illustrate how julia functions defined in a script can be run in Python
 ### time_1d_edit.jl
 The Luna function time_1d was edited to allow for multiple plots to be made on the same figure. Additional 
 functions used in DUV_comparison_plots.jl were also defined in the file.
