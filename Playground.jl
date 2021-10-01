@@ -1,8 +1,3 @@
-#using Plots#; pyplot()
-#Plots.PyPlotBackend()
-#gr(show = true)
-#include("test.jl")
-
 function quad(x)
     y = x^2 + 1000
     return y
