@@ -31,4 +31,22 @@ Main.duv = Main.eval('prop_capillary(radius, flength, gas, pressure; λ0, τfwhm
 Main.eval('dumps = duv["dumps"]')
 dumps = Main.dumps
 
-#Main.eval(" t, Et, zactual = Processing.getEt(duv)")
+Main.eval("t, Et, zactual = Processing.getEt(duv)")
+
+## These next lines show how t, Et and zactual could be accessed in the Python namespace for analysis
+# Once defined, the same method as in time_1d can be used to get the y data needed for analysis of the curve (max heigh, FWHM, etc.), which
+# subsequently would be the inputs the the BO 
+
+# These print out t, Et and zactual at the moment, which fills the terminal. The first step is to mute this printing (perhaps a kwarg in eval?)
+
+
+
+# Main.eval("t[0:10]")
+
+#t = Main.t
+#Et = Main.Et
+#zactual = Main.zactual
+
+#print(t[0:10])
+#print(Et[0:10])
+#print(zactual[0:10])
